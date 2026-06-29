@@ -1,6 +1,6 @@
 # JSON Formatter
 
-🚀 **Live Demo:** https://YOUR_GITHUB_PAGES_URL
+🚀 **Live Demo:** https://anilarr.github.io/JsonFormater
 
 A fast and lightweight JSON Formatter built with HTML, CSS, and JavaScript.
 
