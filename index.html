@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Formatter</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#1e1e1e;
+    color:white;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    color:#00bfff;
+}
+
+.toolbar{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:15px;
+}
+
+button{
+    padding:12px 18px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.format{
+    background:#28a745;
+    color:white;
+}
+
+.minify{
+    background:#007bff;
+    color:white;
+}
+
+.copy{
+    background:#ff9800;
+    color:white;
+}
+
+.clear{
+    background:#dc3545;
+    color:white;
+}
+
+textarea{
+    width:100%;
+    height:500px;
+    background:#252526;
+    color:#d4d4d4;
+    border:1px solid #444;
+    border-radius:8px;
+    padding:15px;
+    font-size:14px;
+    resize:vertical;
+    outline:none;
+}
+
+.status{
+    margin-top:15px;
+    padding:12px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.success{
+    background:#1b5e20;
+}
+
+.error{
+    background:#7f0000;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>JSON Formatter</h1>
+
+<div class="toolbar">
+    <button class="format" onclick="formatJSON()">Format JSON</button>
+    <button class="minify" onclick="minifyJSON()">Minify JSON</button>
+    <button class="copy" onclick="copyJSON()">Copy</button>
+    <button class="clear" onclick="clearEditor()">Clear</button>
+</div>
+
+<textarea id="jsonInput" placeholder='Paste JSON here...'>
+{
+"name":"John",
+"age":25,
+"city":"Mumbai"
+}
+</textarea>
+
+<div id="status" class="status">
+Ready
+</div>
+
+</div>
+
+<script>
+
+function setStatus(message,type)
+{
+    const status=document.getElementById("status");
+
+    status.textContent=message;
+    status.className="status "+type;
+}
+
+function formatJSON()
+{
+    try
+    {
+        const input=document.getElementById("jsonInput").value;
+        const parsed=JSON.parse(input);
+
+        document.getElementById("jsonInput").value=
+            JSON.stringify(parsed,null,4);
+
+        setStatus("✓ Valid JSON formatted successfully","success");
+    }
+    catch(error)
+    {
+        setStatus("✗ Invalid JSON: "+error.message,"error");
+    }
+}
+
+function minifyJSON()
+{
+    try
+    {
+        const input=document.getElementById("jsonInput").value;
+        const parsed=JSON.parse(input);
+
+        document.getElementById("jsonInput").value=
+            JSON.stringify(parsed);
+
+        setStatus("✓ JSON minified successfully","success");
+    }
+    catch(error)
+    {
+        setStatus("✗ Invalid JSON: "+error.message,"error");
+    }
+}
+
+function copyJSON()
+{
+    const text=document.getElementById("jsonInput");
+
+    text.select();
+    document.execCommand("copy");
+
+    setStatus("✓ JSON copied to clipboard","success");
+}
+
+function clearEditor()
+{
+    document.getElementById("jsonInput").value="";
+    setStatus("Editor cleared","success");
+}
+
+</script>
+
+</body>
+</html>
