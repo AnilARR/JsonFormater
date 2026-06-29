@@ -16,8 +16,7 @@ A fast and lightweight JSON Formatter built with HTML, CSS, and JavaScript.
 * ✅ Works on GitHub Pages
 
 ## Screenshot
-
-Add a screenshot here after deployment.
+<img width="1508" height="797" alt="Screenshot 2026-06-29 at 11 52 51 PM" src="https://github.com/user-attachments/assets/7cc6e39b-b919-42b9-bdfd-d1e2861565d8" />
 
 ## Usage
 
@@ -54,7 +53,6 @@ Open `index.html` in your browser.
    * Folder: `/ (root)`
 5. Save.
 
-Your website will be available at:
 
 ```text
 https://anilarr.github.io/JsonFormater/
